@@ -1,8 +1,6 @@
 ## About Project
 
-Basically, project to manage companies and their employees. Mini-CRM.
-
-### Features
+Adminpanel to manage companies, basically, that’s it. With this simple exercise junior developer shows the skills in Laravel things.
 
 - MVC
 - Basic Laravel auth
