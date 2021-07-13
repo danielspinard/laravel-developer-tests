@@ -21,6 +21,8 @@ class CreateEmployeesTable extends Migration
             $table->string('phone', 11)->unique();
             $table->unsignedBigInteger('company_id');
             $table->timestamps();
+
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 
