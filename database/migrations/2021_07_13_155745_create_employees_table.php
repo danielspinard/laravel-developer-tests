@@ -18,10 +18,9 @@ class CreateEmployeesTable extends Migration
             $table->string('first_name', 35);
             $table->string('last_name', 35);
             $table->string('email', 255)->unique();
-            $table->string('phone', 11)->unique();
+            $table->string('phone', 22)->unique();
             $table->unsignedBigInteger('company_id');
             $table->timestamps();
-
             $table->foreign('company_id')->references('id')->on('companies');
         });
     }
