@@ -20,4 +20,14 @@ class Employee extends Model
         'phone',
         'company_id'
     ];
+
+    /**
+     * @return string
+     */
+    public function fullName(): string
+    {
+        return ucwords(
+            $this->first_name . ' ' . $this->last_name
+        );
+    }
 }
