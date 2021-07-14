@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     use HasFactory;
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'address',
+        'logo',
+        'website'
+    ];
 }
