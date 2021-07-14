@@ -13,6 +13,14 @@ class EmployeeFactory extends Factory
     protected $model = Employee::class;
 
     /**
+     * @return int
+     */
+    private function companyId(): int
+    {
+        return \App\Models\Company::all()->random(1)->first()->id;
+    }
+
+    /**
      * @return array
      */
     public function definition(): array
@@ -22,7 +30,7 @@ class EmployeeFactory extends Factory
             'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
-            'company_id' => 1
+            'company_id' => $this->companyId()
         ];
     }
 }
