@@ -35,6 +35,46 @@
             <div class="card-header">
                 Employees list ({{ $employees->count() }})
             </div>
+
+            @component('components.table')
+                @slot('thead')
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Contracted at</th>
+                        <th scope="col" class="text-center">Action</th>
+                    </tr>
+                @endslot
+
+                @slot('tbody')
+                    @foreach($employees as $employee)
+                        <tr>
+                            <td>
+                                <a
+                                    class="text-dark"
+                                    href=""
+                                >
+                                    {{ $employee->full_name }}
+                                </a>
+                            </td>
+                            <td>{{ $employee->email }}</td>
+                            <td>{{ $employee->phone }}</td>
+                            <td>{{ $employee->contracted_at }}</td>
+                            <td class="text-center">
+                                <button
+                                    type="button"
+                                    id="delete-company"
+                                    data-employee={{ $employee->id }}
+                                    class="btn btn-sm btn-danger"
+                                >
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endslot
+            @endcomponent
         </div>
     </div>
 </div>
