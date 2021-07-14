@@ -36,16 +36,19 @@ class CompanyController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return View
      */
-    public function show($id)
+    public function show(int $id): View
     {
-        //
-    }
+        $company = Company::with('employees')->findOrFail($id);
 
+        return view('admin.company.show', [
+            'company' => $company,
+            'employees' => $company->employees
+        ]);
+    }
+    
     /**
      * Show the form for editing the specified resource.
      *
