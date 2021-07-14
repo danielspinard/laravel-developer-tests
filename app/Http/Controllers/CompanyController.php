@@ -17,15 +17,15 @@ class CompanyController extends Controller
             'companies' => Company::get()
         ]);
     }
+    
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('admin.company.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
