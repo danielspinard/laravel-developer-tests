@@ -19,6 +19,14 @@
             </div>
 
             <div class="card-body">
+                @component('components.form')
+                    @slot('route', null)
+                    @slot('method', null)
+                    @slot('name', $company->name)
+                    @slot('email', $company->email)
+                    @slot('address', $company->address)
+                    @slot('website', $company->website)
+                @endcomponent
             </div>
 
         </div>
