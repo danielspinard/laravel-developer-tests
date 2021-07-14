@@ -22,6 +22,14 @@ class Employee extends Model
     ];
 
     /**
+     * @return BelongsTo
+     */
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class, 'id', 'company_id');
+    }
+
+    /**
      * @return string
      */
     public function fullName(): string
