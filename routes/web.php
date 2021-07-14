@@ -23,5 +23,5 @@ Route::get('/companies', [CompanyController::class, 'index'])->name('company.ind
 Route::prefix('/company')->group(function () {
     Route::get('/create', [CompanyController::class, 'create'])->name('company.create');
     Route::post('/', [CompanyController::class, 'store'])->name('company.store');
-    Route::get('/{id}', [CompanyController::class, 'show'])->name('company.show');
+    Route::get('/{id}', [CompanyController::class, 'show'])->name('company.show')->where('id', '[0-9]+');
 });
