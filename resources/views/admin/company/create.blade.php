@@ -19,6 +19,10 @@
             </div>
 
             <div class="card-body">
+                @component('components.form')
+                    @slot('route', route('company.store'))
+                    @slot('method', 'post')
+                @endcomponent
             </div>
         </div>
     </div>
