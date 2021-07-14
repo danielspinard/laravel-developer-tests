@@ -21,10 +21,6 @@ class Employee extends Model
         'company_id'
     ];
 
-    protected $casts = [
-        'created_at' => 'datetime',
-    ];
-
     /**
      * @return BelongsTo
      */
@@ -41,5 +37,13 @@ class Employee extends Model
         return ucwords(
             $this->first_name . ' ' . $this->last_name
         );
+    }
+
+    /**
+     * @return string
+     */
+    public function getContractedAtAttribute(): string
+    {
+        return $this->created_at->format('d/m/Y');
     }
 }
