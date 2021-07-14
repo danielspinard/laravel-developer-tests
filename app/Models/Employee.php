@@ -21,6 +21,10 @@ class Employee extends Model
         'company_id'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
+
     /**
      * @return BelongsTo
      */
@@ -32,7 +36,7 @@ class Employee extends Model
     /**
      * @return string
      */
-    public function fullName(): string
+    public function getFullNameAttribute(): string
     {
         return ucwords(
             $this->first_name . ' ' . $this->last_name
