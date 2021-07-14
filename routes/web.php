@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/companies', [CompanyController::class, 'index'])->name('company.index');
+
+Route::prefix('/company')->group(function () {
+    Route::get('/create', [CompanyController::class, 'create'])->name('company.create');
+});
