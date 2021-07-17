@@ -14,10 +14,14 @@ use App\Http\Controllers\CompanyController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**
+ * ?auth routes
+ */
+Auth::routes();
 
+/**
+ * ?company routes
+ */
 Route::get('/companies', [CompanyController::class, 'index'])->name('company.index');
 
 Route::prefix('/company')->group(function () {
