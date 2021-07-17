@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\CompanyController;
 
 /*
@@ -18,6 +19,11 @@ use App\Http\Controllers\CompanyController;
  * ?auth routes
  */
 Auth::routes();
+
+/**
+ * ?app routes
+ */
+Route::get('/', [AppController::class, 'dashboard'])->name('app.dashboard');
 
 /**
  * ?company routes
