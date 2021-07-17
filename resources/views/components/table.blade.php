@@ -1,5 +1,5 @@
 <div class="px-3 pt-2">
-    <table class="table table-borderless">
+    <table class="table table-borderless table-responsive">
         <thead>
             {{ $thead }}
         </thead>
