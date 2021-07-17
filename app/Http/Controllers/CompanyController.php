@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
 use App\Models\Company;
 
 class CompanyController extends Controller
@@ -73,13 +75,19 @@ class CompanyController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): JsonResponse
     {
-        //
+        if (Company::destroy($id)) {
+            return response()->json([
+                'result' => 'success'
+            ]);
+        }
+
+        return response()->json([
+            'result' => 'fail'
+        ]);
     }
 }
