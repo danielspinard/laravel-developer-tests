@@ -1,0 +1,6 @@
+tbody, td, tfoot, th, thead, tr {
+    border: 0!important;
+}
+table th, table td {
+    padding: 0.45rem!important;
+}
