@@ -27,4 +27,12 @@ class CompanyStoreRequest extends FormRequest
             'company_logo' => 'mimes:jpg,bmp,png|dimensions:min_width=100,min_height=100'
         ];
     }
+
+    /**
+     * @return bool
+     */
+    public function hasLogo(): bool
+    {
+        return isset($this->company_logo);
+    }
 }
