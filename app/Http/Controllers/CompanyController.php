@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Company;
+use App\Http\Requests\CompanyStoreRequest;
 
 class CompanyController extends Controller
 {
@@ -29,12 +30,20 @@ class CompanyController extends Controller
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CompanyStoreRequest $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(CompanyStoreRequest $request): JsonResponse
     {
-        dd($request->all());
+        if (Company::create($request->all())) {
+            return response()->json([
+                'result' => 'success'
+            ]);
+        }
+
+        return response()->json([
+            'result' => 'fail'
+        ]);
     }
 
     /**
