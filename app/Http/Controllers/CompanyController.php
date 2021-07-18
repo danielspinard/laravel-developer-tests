@@ -35,14 +35,14 @@ class CompanyController extends Controller
      */
     public function store(CompanyStoreRequest $request): JsonResponse
     {
-        if (Company::create($request->all())) {
-            return response()->json([
-                'result' => 'success'
+        if ($request->hasLogo()) {
+            $request->request->add([
+                'logo' => $request->file('company_logo')->store('public/logos')
             ]);
         }
 
         return response()->json([
-            'result' => 'fail'
+            'result' => (Company::create($request->all()) ? 'success' : 'false')
         ]);
     }
 
