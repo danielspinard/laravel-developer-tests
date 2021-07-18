@@ -1,4 +1,4 @@
-<form method="{{ $method }}" action="{{ $route }}">
+<form method="{{ $method }}" action="{{ $route }}" enctype='multipart/form-data'>
     @method($method)
     {{ csrf_field() }}
 
@@ -54,7 +54,7 @@
         <input
             type="file"
             class="form-control"
-            name="logo"
+            name="company_logo"
             id="company_logo"
         >
     </div>
