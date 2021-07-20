@@ -56,6 +56,8 @@
                         icon: "success",
                         button: false,
                         timer: 1850,
+                    }).then(() => {
+                        $(location).attr('href', "{{ route('company.index') }}");
                     });
                 },
                 error: function (response) {
