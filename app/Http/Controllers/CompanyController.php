@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Company;
-use App\Http\Requests\CompanyStoreRequest;
+use App\Http\Requests\CompanyStoreUpdateRequest;
 
 class CompanyController extends Controller
 {
@@ -30,10 +30,10 @@ class CompanyController extends Controller
     }
 
     /**
-     * @param CompanyStoreRequest $request
+     * @param CompanyStoreUpdateRequest $request
      * @return JsonResponse
      */
-    public function store(CompanyStoreRequest $request): JsonResponse
+    public function store(CompanyStoreUpdateRequest $request): JsonResponse
     {
         if ($request->hasLogo()) {
             $request->request->add([
@@ -61,15 +61,17 @@ class CompanyController extends Controller
     }
     
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param CompanyStoreUpdateRequest $request
+     * @param int $id
+     * @return JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(CompanyStoreUpdateRequest $request, int $id): JsonResponse
     {
-        //
+        $update = (Company::findOrFail($id)->update($request->all()));
+
+        return response()->json([
+            'result' => ($update ? 'success' : 'fail')
+        ]);
     }
 
     /**
