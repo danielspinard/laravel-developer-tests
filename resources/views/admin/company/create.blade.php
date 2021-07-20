@@ -60,10 +60,19 @@
                 },
                 error: function (response) {
                     let error = response.responseJSON;
+                    let errors = '';
+
+                    $.each(error, function (attribute, value) {
+                        if($.isPlainObject(value)) {
+                            $.each(value, function (input, error) {
+                                errors = errors + error + "\n";
+                            });
+                        }
+                    });
 
                     return swal({
                         title: error.message,
-                        text: 'errors',
+                        text: errors,
                         icon: "error",
                         button: false,
                         timer: 3500,
