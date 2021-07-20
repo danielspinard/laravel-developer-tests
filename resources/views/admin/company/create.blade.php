@@ -50,7 +50,13 @@
                 processData: false,
                 contentType: false,
                 success: (response) => {
-                    console.log(response);
+                    return swal({
+                        title: "Company created.",
+                        text: "New company has been created",
+                        icon: "success",
+                        button: false,
+                        timer: 1850,
+                    });
                 }
             });
         });
