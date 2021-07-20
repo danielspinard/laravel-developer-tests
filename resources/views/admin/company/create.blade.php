@@ -57,6 +57,17 @@
                         button: false,
                         timer: 1850,
                     });
+                },
+                error: function (response) {
+                    let error = response.responseJSON;
+
+                    return swal({
+                        title: error.message,
+                        text: 'errors',
+                        icon: "error",
+                        button: false,
+                        timer: 3500,
+                    });
                 }
             });
         });
