@@ -14,9 +14,9 @@
                 Back to company list
             </a>
 
-            <a href="" class="btn btn-danger">
+            <button id="delete-company" data-action="{{ route('company.destroy', ['id' =>$company->id]) }}" class="btn btn-danger">
                 Delete company
-            </a>
+            </button>
 
             <a href="" class="btn btn-success">
                 Register employee
@@ -74,3 +74,23 @@
     </div>
 </div>
 @endsection
+
+@push('style')
+    <link rel="stylesheet" href="{{ asset('css/swal.css') }}">    
+@endpush
+
+@push('script')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script>
+        $("#delete-company").click(() => {
+            swal({
+                title: "Are you sure you want to delete this company?",
+                text: "This action is irreverent and all your employees will be excluded.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            });
+        });
+    </script>
+@endpush
