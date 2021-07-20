@@ -37,50 +37,16 @@
 
 @push('script')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    <script src="{{ asset('js/helpers.js') }}"></script>
+    
     <script>
-        $("form").submit(function (event) {
+        $("form").submit((event) => {
             event.preventDefault();
 
-            $.ajax({
-                url: $(this).attr('action'),
-                method: 'POST',
-                enctype: 'multipart/form-data',
-                data: new FormData($(this)[0]),
-                processData: false,
-                contentType: false,
-                success: (response) => {
-                    return swal({
-                        title: "Company created.",
-                        text: "Company was created successfully.",
-                        icon: "success",
-                        button: false,
-                        timer: 1850,
-                    }).then(() => {
-                        $(location).attr('href', "{{ route('company.index') }}");
-                    });
-                },
-                error: function (response) {
-                    let error = response.responseJSON;
-                    let errors = '';
-
-                    $.each(error, function (attribute, value) {
-                        if($.isPlainObject(value)) {
-                            $.each(value, function (input, error) {
-                                errors = errors + error + "\n";
-                            });
-                        }
-                    });
-
-                    return swal({
-                        title: error.message,
-                        text: errors,
-                        icon: "error",
-                        button: false,
-                        timer: 3500,
-                    });
-                }
-            });
+            ajaxStoreUpdateRequest(
+                $("form"),
+                "{{ route('company.index') }}"
+            );
         });
     </script>
 @endpush

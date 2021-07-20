@@ -81,6 +81,7 @@
 
 @push('script')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{ asset('js/helpers.js') }}"></script>
     
     <script>
         $("#delete-company").click(() => {
@@ -115,6 +116,15 @@
                     }
                 });
             });
+        });
+
+        $("form").submit((event) => {
+            event.preventDefault();
+
+            ajaxStoreUpdateRequest(
+                $("form"),
+                ""
+            );
         });
     </script>
 @endpush
