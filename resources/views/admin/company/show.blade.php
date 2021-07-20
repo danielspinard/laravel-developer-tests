@@ -90,6 +90,30 @@
                 icon: "warning",
                 buttons: true,
                 dangerMode: true
+            }).then((willDelete) => {
+                if (!willDelete) {
+                    return;
+                }
+
+                $.ajax({
+                    url: $(this).attr('data-action'),
+                    method: 'delete',
+                    data: {
+                        '_token': '{{ csrf_token() }}'
+                    }
+                }).done(function (response) {
+                    if (response.result === 'success') {
+                        swal({
+                            title: "Company deleted.",
+                            text: "Company was deleted successfully.",
+                            button: false,
+                            icon: "success",
+                            timer: 2000
+                        }).then(() => {
+                            $(location).attr('href', "{{ route('company.index') }}");
+                        });
+                    }
+                });
             });
         });
     </script>
