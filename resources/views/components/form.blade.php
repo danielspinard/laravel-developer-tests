@@ -9,7 +9,7 @@
             class="form-control"
             name="name"
             id="company_name"
-            value="@isset($name) {{ $name }} @endisset"
+            value="@isset($name){{ $name }}@endisset"
         >
     </div>
 
@@ -20,7 +20,7 @@
             class="form-control"
             name="email"
             id="company_email"
-            value="@isset($email) {{ $email }} @endisset"
+            value="@isset($email){{ $email }}@endisset"
         >
         <div class="form-text">
             We'll never share your email with anyone else.
@@ -34,7 +34,7 @@
             class="form-control"
             name="address"
             id="company_address"
-            value="@isset($address) {{ $address }} @endisset"
+            value="@isset($address){{ $address }}@endisset"
         >
     </div>
 
@@ -45,7 +45,7 @@
             class="form-control"
             name="website"
             id="company_website"
-            value="@isset($website) {{ $website }} @endisset"
+            value="@isset($website){{ $website }}@endisset"
         >
     </div>
 
@@ -57,6 +57,15 @@
             name="company_logo"
             id="company_logo"
         >
+
+        @isset($logo)
+            <img
+                src="{{ asset('storage/' . $logo) }}"
+                alt="{{ $website }} logo"
+                class="mt-3 rounded"
+                style="max-width: 150px"
+            >
+        @endisset
     </div>
 
     <button type="submit" class="btn btn-primary">
