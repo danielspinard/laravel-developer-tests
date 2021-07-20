@@ -37,4 +37,22 @@
 
 @push('script')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        $("form").submit(function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                method: 'POST',
+                enctype: 'multipart/form-data',
+                data: new FormData($(this)[0]),
+                processData: false,
+                contentType: false,
+                success: (response) => {
+                    console.log(response);
+                }
+            });
+        });
+    </script>
 @endpush
