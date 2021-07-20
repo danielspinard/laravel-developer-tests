@@ -103,7 +103,7 @@
                     }
                 }).done(function (response) {
                     if (response.result === 'success') {
-                        swal({
+                        return swal({
                             title: "Company deleted.",
                             text: "Company was deleted successfully.",
                             button: false,
