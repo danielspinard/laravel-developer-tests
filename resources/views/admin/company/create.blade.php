@@ -52,7 +52,7 @@
                 success: (response) => {
                     return swal({
                         title: "Company created.",
-                        text: "New company has been created",
+                        text: "Company was created successfully.",
                         icon: "success",
                         button: false,
                         timer: 1850,
