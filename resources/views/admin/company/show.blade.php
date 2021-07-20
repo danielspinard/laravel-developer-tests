@@ -29,8 +29,8 @@
     
                 <div class="card-body">
                     @component('components.form')
-                        @slot('route', null)
-                        @slot('method', null)
+                        @slot('route', route('company.update', ['id' => $company->id]))
+                        @slot('method', 'put')
                         @slot('name', $company->name)
                         @slot('email', $company->email)
                         @slot('address', $company->address)
