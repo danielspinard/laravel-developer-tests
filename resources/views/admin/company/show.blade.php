@@ -35,6 +35,7 @@
                         @slot('email', $company->email)
                         @slot('address', $company->address)
                         @slot('website', $company->website)
+                        @slot('logo', $company->logo)
                     @endcomponent
                 </div>
             </div>
