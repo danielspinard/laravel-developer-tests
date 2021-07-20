@@ -1,4 +1,4 @@
-<form method="{{ $method }}" action="{{ $route }}" enctype='multipart/form-data'>
+<form method="{{ $method === 'get' ? 'get' : 'post' }}" action="{{ $route }}" enctype='multipart/form-data'>
     @method($method)
     {{ csrf_field() }}
 
