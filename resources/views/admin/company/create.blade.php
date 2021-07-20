@@ -31,6 +31,10 @@
 </div>
 @endsection
 
+@push('style')
+    <link rel="stylesheet" href="{{ asset('css/swal.css') }}">    
+@endpush
+
 @push('script')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endpush
