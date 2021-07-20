@@ -8,9 +8,27 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Company;
 use App\Http\Requests\CompanyStoreUpdateRequest;
+use App\Http\Traits\UploadTrait;
 
 class CompanyController extends Controller
 {
+    use UploadTrait;
+
+    /**
+     * @param CompanyStoreUpdateRequest $request
+     * @return CompanyStoreUpdateRequest
+     */
+    private function uploadCompanyLogo(CompanyStoreUpdateRequest $request): CompanyStoreUpdateRequest
+    {
+        if ($request->hasLogo()) {
+            $request->request->add([
+                'logo' => $this->upload($request->file('company_logo'))
+            ]);
+        }
+
+        return $request;
+    }
+
     /**
      * @return View
      */
@@ -35,11 +53,7 @@ class CompanyController extends Controller
      */
     public function store(CompanyStoreUpdateRequest $request): JsonResponse
     {
-        if ($request->hasLogo()) {
-            $request->request->add([
-                'logo' => $request->file('company_logo')->store('public/logos')
-            ]);
-        }
+        $request = $this->uploadCompanyLogo($request);
 
         return response()->json([
             'result' => (Company::create($request->all()) ? 'success' : 'false')
@@ -67,6 +81,7 @@ class CompanyController extends Controller
      */
     public function update(CompanyStoreUpdateRequest $request, int $id): JsonResponse
     {
+        $request = $this->uploadCompanyLogo($request);
         $update = (Company::findOrFail($id)->update($request->all()));
 
         return response()->json([
