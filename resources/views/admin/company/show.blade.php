@@ -10,8 +10,16 @@
         </div>
     
         <div class="card-body">
-            <a href="{{ route('company.create') }}" class="btn btn-primary">
-                Create new Company
+            <a href="{{ route('company.index') }}" class="btn btn-primary">
+                Back to company list
+            </a>
+
+            <a href="" class="btn btn-danger">
+                Delete company
+            </a>
+
+            <a href="" class="btn btn-success">
+                Register employee
             </a>
     
             <div class="card mt-3">
@@ -29,7 +37,6 @@
                         @slot('website', $company->website)
                     @endcomponent
                 </div>
-    
             </div>
     
             <div class="card mt-3">
@@ -44,7 +51,6 @@
                             <th scope="col">Email</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Contracted at</th>
-                            <th scope="col" class="text-center">Action</th>
                         </tr>
                     @endslot
     
@@ -52,26 +58,13 @@
                         @foreach($employees as $employee)
                             <tr>
                                 <td>
-                                    <a
-                                        class="text-dark"
-                                        href=""
-                                    >
+                                    <a class="text-dark">
                                         {{ $employee->full_name }}
                                     </a>
                                 </td>
                                 <td>{{ $employee->email }}</td>
                                 <td>{{ $employee->phone }}</td>
                                 <td>{{ $employee->contracted_at }}</td>
-                                <td class="text-center">
-                                    <button
-                                        type="button"
-                                        id="delete-company"
-                                        data-employee={{ $employee->id }}
-                                        class="btn btn-sm btn-danger"
-                                    >
-                                        Delete
-                                    </button>
-                                </td>
                             </tr>
                         @endforeach
                     @endslot
