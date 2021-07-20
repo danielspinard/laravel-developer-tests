@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CompanyStoreRequest extends FormRequest
+class CompanyStoreUpdateRequest extends FormRequest
 {
     /**
      * @return bool
@@ -21,7 +22,10 @@ class CompanyStoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|unique:companies',
+            'email' => [
+                'required',
+                Rule::unique('companies')->ignore($this->id),
+            ],
             'address' => 'min:3|max:255',
             'website' => 'active_url',
             'company_logo' => 'mimes:jpg,bmp,png|dimensions:min_width=100,min_height=100'
