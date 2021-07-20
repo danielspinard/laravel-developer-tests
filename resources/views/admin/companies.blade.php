@@ -26,7 +26,6 @@
                             <th scope="col">Address</th>
                             <th scope="col">Website</th>
                             <th scope="col">Email</th>
-                            <th scope="col" class="text-center">Action</th>
                         </tr>
                     @endslot
     
@@ -44,16 +43,6 @@
                                 <td>{{ $company->address }}</td>
                                 <td>{{ $company->website }}</td>
                                 <td>{{ $company->email }}</td>
-                                <td class="text-center">
-                                    <button
-                                        type="button"
-                                        id="delete-company"
-                                        data-company={{ $company->id }}
-                                        class="btn btn-sm btn-danger"
-                                    >
-                                        Delete
-                                    </button>
-                                </td>
                             </tr>
                         @endforeach
                     @endslot
@@ -64,25 +53,3 @@
 </div>
 @endsection
 
-@push('script')
-    <script>
-        let route = '{{ route('company.destroy', ['id' => 'id']) }}';
-        console.log(window.jQuery);
-
-        $(document).on("click", "#delete-company", function () {
-            let element =  $(this);
-
-            $.ajax({
-                url: route.replace('id', element.attr('data-company')),
-                method: 'delete',
-                data: {
-                    '_token': '{{ csrf_token() }}'
-                }
-            }).done(function (response) {
-                if (response.result === 'success') {
-                    return element.parent().parent().remove();
-                }
-            });
-        })
-    </script>
-@endpush
