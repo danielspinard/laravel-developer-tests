@@ -78,14 +78,8 @@ class CompanyController extends Controller
      */
     public function destroy(int $id): JsonResponse
     {
-        if (Company::destroy($id)) {
-            return response()->json([
-                'result' => 'success'
-            ]);
-        }
-
         return response()->json([
-            'result' => 'fail'
+            'result' => (Company::destroy($id) ? 'success' : 'fail')
         ]);
     }
 }
