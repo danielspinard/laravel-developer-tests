@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,10 @@ Route::prefix('/company')->group(function () {
     Route::delete('/{id}', [CompanyController::class, 'destroy'])->name('company.destroy')->where('id', '[0-9]+');
     Route::patch('/{id}', [CompanyController::class, 'update'])->name('company.update')->where('id', '[0-9]+');
 });
+
+/**
+ * ?employee routes
+ */
+Route::resource('/employee', EmployeeController::class)->except([
+    'edit'
+]);
