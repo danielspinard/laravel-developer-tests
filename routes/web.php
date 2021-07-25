@@ -43,5 +43,5 @@ Route::prefix('/company')->group(function () {
  * ?employee routes
  */
 Route::resource('/employee', EmployeeController::class)->except([
-    'edit'
+    'index', 'edit'
 ]);
