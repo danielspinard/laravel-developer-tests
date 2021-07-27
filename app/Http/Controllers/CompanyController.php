@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Company;
 use App\Http\Requests\CompanyStoreUpdateRequest;
 use App\Http\Traits\UploadTrait;
@@ -38,7 +36,7 @@ class CompanyController extends Controller
             'companies' => Company::get()
         ]);
     }
-    
+
     /**
      * @return View
      */
@@ -53,10 +51,12 @@ class CompanyController extends Controller
      */
     public function store(CompanyStoreUpdateRequest $request): JsonResponse
     {
-        $request = $this->uploadCompanyLogo($request);
+        $create = Company::create(
+            $this->uploadCompanyLogo($request)->all()
+        );
 
         return response()->json([
-            'result' => (Company::create($request->all()) ? 'success' : 'false')
+            'result' => ($create ? 'success' : 'false')
         ]);
     }
 
@@ -73,7 +73,7 @@ class CompanyController extends Controller
             'employees' => $company->employees
         ]);
     }
-    
+
     /**
      * @param CompanyStoreUpdateRequest $request
      * @param int $id
@@ -81,8 +81,9 @@ class CompanyController extends Controller
      */
     public function update(CompanyStoreUpdateRequest $request, int $id): JsonResponse
     {
-        $request = $this->uploadCompanyLogo($request);
-        $update = (Company::findOrFail($id)->update($request->all()));
+        $update = Company::findOrFail($id)->update(
+            $this->uploadCompanyLogo($request)->all()
+        );
 
         return response()->json([
             'result' => ($update ? 'success' : 'fail')
