@@ -53,8 +53,11 @@
     "If you did not expect to receive an invitation to this team, you may discard this email.": "Se você não sabe porque está recebendo um convite para esse time, pode descartar esse e-mail",
     "You are logged in!": "Você está logado!",
     "Dashboard": "Painel de controle",
+
     "Companies": "Empresas",
     "Create new Company": "Cadastrar nova Empresa",
     "Company list": "Lista de empresas",
-    "Address": "Endereço"
+    "Address": "Endereço",
+    "Back to company list": "Voltar a lista de empresas",
+    "Company info": "Informações da Empresa"
 }
