@@ -3,7 +3,10 @@
     {{ csrf_field() }}
 
     <div class="mb-3">
-        <label for="company_name" class="form-label">Name</label>
+        <label for="company_name" class="form-label">
+            {{ __('Name') }}
+        </label>
+
         <input
             type="text"
             class="form-control"
@@ -14,7 +17,10 @@
     </div>
 
     <div class="mb-3">
-        <label for="company_email" class="form-label">Email</label>
+        <label for="company_email" class="form-label">
+            {{ __('E-mail') }}
+        </label>
+
         <input
             type="email"
             class="form-control"
@@ -22,13 +28,17 @@
             id="company_email"
             value="@isset($email){{ $email }}@endisset"
         >
+
         <div class="form-text">
-            We'll never share your email with anyone else.
+            {{ __('An email from the company that has not been registered before.') }}
         </div>
     </div>
 
     <div class="mb-3">
-        <label for="company_address" class="form-label">Address</label>
+        <label for="company_address" class="form-label">
+            {{ __('Address') }}
+        </label>
+
         <input
             type="text"
             class="form-control"
@@ -39,7 +49,10 @@
     </div>
 
     <div class="mb-3">
-        <label for="company_website" class="form-label">Website</label>
+        <label for="company_website" class="form-label">
+            {{ __('Website') }}
+        </label>
+
         <input
             type="text"
             class="form-control"
@@ -50,7 +63,10 @@
     </div>
 
     <div class="mb-3">
-        <label for="company_logo" class="form-label">Logo</label>
+        <label for="company_logo" class="form-label">
+            {{ __('Logo') }}
+        </label>
+
         <input
             type="file"
             class="form-control"
@@ -70,9 +86,9 @@
 
     <button type="submit" class="btn btn-primary">
         @isset($name)
-            Update
+            {{ __('Update company info') }}
         @else
-            Create
+            {{ __('Create new Company') }}
         @endisset
     </button>
 </form>
