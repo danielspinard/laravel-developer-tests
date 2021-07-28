@@ -125,11 +125,7 @@
 
         $("form").submit((event) => {
             event.preventDefault();
-
-            ajaxStoreUpdateRequest(
-                $("form"),
-                ""
-            );
+            ajaxStoreUpdateRequest($("form"));
         });
     </script>
 @endpush
