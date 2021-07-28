@@ -53,11 +53,20 @@
     "If you did not expect to receive an invitation to this team, you may discard this email.": "Se você não sabe porque está recebendo um convite para esse time, pode descartar esse e-mail",
     "You are logged in!": "Você está logado!",
     "Dashboard": "Painel de controle",
-
     "Companies": "Empresas",
     "Create new Company": "Cadastrar nova Empresa",
+    "Delete company": "Excluir empresa",
+    "Register employee": "Cadastrar funcionário",
     "Company list": "Lista de empresas",
     "Address": "Endereço",
     "Back to company list": "Voltar a lista de empresas",
-    "Company info": "Informações da Empresa"
+    "Company info": "Informações da Empresa",
+    "Phone": "Telefone",
+    "Contracted at": "Contratado em",
+    "Employees list": "Lista de Funcionários",
+    "Are you sure you want to delete this company?": "Tem certeza de que deseja excluir esta empresa?",
+    "This action is irreverent and all your employees will be excluded.": "Esta ação é irreversível e todos os seus funcionários serão excluídos.",
+    "Company deleted.": "Empresa excluída.",
+    "Company was deleted successfully.": "Empresa foi excluída com sucesso",
+    "Cancel": "Cancelar"
 }

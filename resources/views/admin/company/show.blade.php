@@ -6,25 +6,25 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            Companies
+            {{ __('Companies') }}
         </div>
     
         <div class="card-body">
             <a href="{{ route('company.index') }}" class="btn btn-primary">
-                Back to company list
+                {{ __('Back to company list') }}
             </a>
 
             <button id="delete-company" data-action="{{ route('company.destroy', ['id' =>$company->id]) }}" class="btn btn-danger">
-                Delete company
+                {{ __('Delete company') }}
             </button>
 
             <a href="" class="btn btn-success">
-                Register employee
+                {{ __('Register employee') }}
             </a>
     
             <div class="card mt-3">
                 <div class="card-header">
-                    Company info
+                    {{ __('Company info') }}
                 </div>
     
                 <div class="card-body">
@@ -42,16 +42,20 @@
     
             <div class="card mt-3">
                 <div class="card-header">
-                    Employees list ({{ $employees->count() }})
+                    {{ __('Employees list') }}
+                    
+                    <span class="text-muted">
+                        ({{ $employees->count() }})
+                    </span>
                 </div>
     
                 @component('components.table')
                     @slot('thead')
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Contracted at</th>
+                            <th scope="col">{{ __('Name') }}</th>
+                            <th scope="col">{{ __('Email') }}</th>
+                            <th scope="col">{{ __('Phone') }}</th>
+                            <th scope="col">{{ __('Contracted at') }}</th>
                         </tr>
                     @endslot
     
@@ -59,7 +63,7 @@
                         @foreach($employees as $employee)
                             <tr>
                                 <td>
-                                    <a class="text-dark">
+                                    <a class="text-dark" href="{{ route('employee.show', $employee->id) }}">
                                         {{ $employee->full_name }}
                                     </a>
                                 </td>
