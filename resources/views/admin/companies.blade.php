@@ -6,29 +6,29 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            Companies
+            {{ __('Companies') }}
         </div>
-    
+
         <div class="card-body">
             <a href="{{ route('company.create') }}" class="btn btn-primary">
-                Create new Company
+                {{ __('Create new Company') }}
             </a>
-    
+
             <div class="card mt-3">
                 <div class="card-header">
-                    Company list
+                    {{ __('Company list') }}
                 </div>
-    
+
                 @component('components.table')
                     @slot('thead')
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Website</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">{{ __('Name') }}</th>
+                            <th scope="col">{{ __('Address') }}</th>
+                            <th scope="col">{{ __('Website') }}</th>
+                            <th scope="col">{{ __('E-mail') }}</th>
                         </tr>
                     @endslot
-    
+
                     @slot('tbody')
                         @foreach($companies as $company)
                             <tr>
