@@ -20,7 +20,7 @@ function getErrorsFromLaravelValidator(response) {
  * @param {HTMLFormElement} formElement
  * @param {String} redirectOnSuccess 
  */
-function ajaxStoreUpdateRequest(formElement, redirectOnSuccess) {
+function ajaxStoreUpdateRequest(formElement, redirectOnSuccess = "") {
     $.ajax({
         url: formElement.attr("action"),
         data: new FormData(formElement[0]),
