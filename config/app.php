@@ -230,4 +230,18 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Languages Supported
+    |--------------------------------------------------------------------------
+    |
+    | This array of languages supported for this application
+    |
+    */
+
+    'languages' => [
+        'en' => 'English',
+        'pt_BR' => 'Português (Brasil)',
+    ],
+
 ];
