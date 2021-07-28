@@ -40,6 +40,23 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Language') }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @foreach(config('app.languages') as $langLocale => $langName)
+                                    <a
+                                        class="dropdown-item"
+                                        href=""
+                                    >
+                                        {{ $langName }}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </li>
+                        
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
