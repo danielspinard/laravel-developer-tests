@@ -69,7 +69,18 @@
     "Employees list": "Lista de Funcionários",
     "Are you sure you want to delete this company?": "Tem certeza de que deseja excluir esta empresa?",
     "This action is irreverent and all your employees will be excluded.": "Esta ação é irreversível e todos os seus funcionários serão excluídos.",
-    "Company deleted.": "Empresa excluída.",
+    "Company deleted!": "Empresa excluída!",
     "Company was deleted successfully.": "Empresa foi excluída com sucesso",
-    "An email from the company that has not been registered before.": "Um e-mail da empresa que não foi cadastrado antes."
+    "An email from the company that has not been registered before.": "Um e-mail da empresa que não foi cadastrado antes.",
+    "Company created!": "Empresa cadastrada!",
+    "Company was created successfully.": "Empresa foi criada com sucesso.",
+    "Failed to register company!": "Falha ao registrar empresa!",
+    "It was not possible to register the company.": "Não foi possível cadastrar a empresa.",
+    "Failed when trying to delete company!": "Falha ao tentar excluir empresa!",
+    "It was not possible to delete this company.": "Não foi póssivel excluir esta empresa.",
+    "Company updated!": "Empresa atualizada!",
+    "Company was updated successfully.": "Empresa foi atualizada com sucesso.",
+    "Failed when trying to update company!": "Falha ao tentar atualizar empresa!",
+    "It was not possible to update this company.": "Não foi póssivel atualizar esta empresa.",
+    "The given data was invalid.": "Os dados fornecidos são inválidos."
 }
