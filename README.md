@@ -16,19 +16,14 @@ Adminpanel to manage companies, basically, that’s it. With this simple exercis
 ## Project previews
 ![change-language-en](.github/previews/change-language-en.png)
 ![change-language-pt](.github/previews/change-language-pt.png)
-
 ![validation-error-1](.github/previews/validation-error-1.png)
 ![validation-error-2](.github/previews/validation-error-2.png)
-
 ![created-company](.github/previews/created-company.png)
-
 ![updated-company](.github/previews/updated-company.png)
-
 ![confirm-delete](.github/previews/confirm-delete.png)
 ![deleted-company](.github/previews/deleted-company.png)
-
 ![employee-list](.github/previews/employee-list.png)
-![employee-show](.github/previews/employee-list.png)
+![employee-show](.github/previews/employee-show.png)
 
 ## Learning Laravel
 
