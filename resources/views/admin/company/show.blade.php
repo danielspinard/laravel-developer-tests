@@ -91,8 +91,8 @@
     <script>
         $("#delete-company").click(() => {
             swal({
-                title: "Are you sure you want to delete this company?",
-                text: "This action is irreverent and all your employees will be excluded.",
+                title: "{{ __('Are you sure you want to delete this company?') }}",
+                text: "{{ __('This action is irreverent and all your employees will be excluded.') }}",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true
@@ -104,21 +104,11 @@
                 $.ajax({
                     url: $(this).attr('data-action'),
                     method: 'delete',
-                    data: {
-                        '_token': '{{ csrf_token() }}'
-                    }
+                    data: {'_token': '{{ csrf_token() }}'}
                 }).done(function (response) {
-                    if (response.result === 'success') {
-                        return swal({
-                            title: "Company deleted.",
-                            text: "Company was deleted successfully.",
-                            button: false,
-                            icon: "success",
-                            timer: 2000
-                        }).then(() => {
-                            $(location).attr('href', "{{ route('company.index') }}");
-                        });
-                    }
+                    return swal(response.data).then(() => {
+                        $(location).attr('href', "{{ route('company.index') }}");
+                    });
                 });
             });
         });

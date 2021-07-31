@@ -42,11 +42,7 @@
     <script>
         $("form").submit((event) => {
             event.preventDefault();
-
-            ajaxStoreUpdateRequest(
-                $("form"),
-                "{{ route('company.index') }}"
-            );
+            ajaxStoreUpdateRequest($("form"), "{{ route('company.index') }}");
         });
     </script>
 @endpush
