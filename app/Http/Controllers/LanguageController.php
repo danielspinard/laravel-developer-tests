@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\LanguageUpdateRequest;
@@ -11,13 +13,19 @@ use App\Http\Requests\LanguageUpdateRequest;
 class LanguageController extends Controller
 {
     /**
-     * @param LanguageUpdateRequest $request
+     * @param string $language
      * @return RedirectResponse
      */
-    public function change(LanguageUpdateRequest $request): RedirectResponse
+    public function change(string $language): RedirectResponse
     {
-        App::setlocale($request->language);
-        Session::put('locale', $request->language);
+        $languages = array_keys(Config::get('app.languages'));
+
+        if (!Rule::in($languages)) {
+            $language = 'en';
+        }
+
+        App::setlocale($language);
+        Session::put('locale', $language);
 
         return Redirect::back();
     }

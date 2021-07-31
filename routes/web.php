@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Auth::routes();
  * ?app routes
  */
 Route::get('/', [AppController::class, 'dashboard'])->name('app.dashboard');
+Route::get('/language/{language}', [LanguageController::class, 'change'])->name('language.change');
 
 /**
  * ?company routes
