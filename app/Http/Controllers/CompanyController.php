@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
-use Illuminate\Http\JsonResponse;
-use App\Models\Company;
 use App\Http\Requests\CompanyStoreUpdateRequest;
 use App\Http\Traits\UploadTrait;
+use App\Http\Resources\SweetAlertResource;
+use App\Models\Company;
 
 class CompanyController extends Controller
 {
@@ -47,16 +47,24 @@ class CompanyController extends Controller
 
     /**
      * @param CompanyStoreUpdateRequest $request
-     * @return JsonResponse
+     * @return SweetAlertResource
      */
-    public function store(CompanyStoreUpdateRequest $request): JsonResponse
+    public function store(CompanyStoreUpdateRequest $request): SweetAlertResource
     {
-        $create = Company::create(
-            $this->uploadCompanyLogo($request)->all()
-        );
+        $company = $this->uploadCompanyLogo($request)->all();
 
-        return response()->json([
-            'result' => ($create ? 'success' : 'false')
+        if (Company::create($company)) {
+            return new SweetAlertResource([
+                'title' => 'Company created!',
+                'text' => 'Company was created successfully.',
+                'icon' => 'success'
+            ]);
+        }
+
+        return new SweetAlertResource([
+            'title' => 'Failed to register company!',
+            'text' => 'It was not possible to register the company.',
+            'icon' => 'error'
         ]);
     }
 
@@ -77,27 +85,46 @@ class CompanyController extends Controller
     /**
      * @param CompanyStoreUpdateRequest $request
      * @param int $id
-     * @return JsonResponse
+     * @return SweetAlertResource
      */
-    public function update(CompanyStoreUpdateRequest $request, int $id): JsonResponse
+    public function update(CompanyStoreUpdateRequest $request, int $id): SweetAlertResource
     {
-        $update = Company::findOrFail($id)->update(
-            $this->uploadCompanyLogo($request)->all()
-        );
+        $company = Company::findOrFail($id);
+        $updates = $this->uploadCompanyLogo($request)->all();
 
-        return response()->json([
-            'result' => ($update ? 'success' : 'fail')
+        if ($company->update($updates)) {
+            return new SweetAlertResource([
+                'title' => 'Company updated!',
+                'text' => 'Company was updated successfully.',
+                'icon' => 'success'
+            ]);
+        }
+
+        return new SweetAlertResource([
+            'title' => 'Failed when trying to update company!',
+            'text' => 'It was not possible to update this company.',
+            'icon' => 'error'
         ]);
     }
 
     /**
      * @param int $id
-     * @return JsonResponse
+     * @return SweetAlertResource
      */
-    public function destroy(int $id): JsonResponse
+    public function destroy(int $id): SweetAlertResource
     {
-        return response()->json([
-            'result' => (Company::destroy($id) ? 'success' : 'fail')
+        if (Company::destroy($id)) {
+            return new SweetAlertResource([
+                'title' => 'Company deleted!',
+                'text' => 'Company was deleted successfully.',
+                'icon' => 'success'
+            ]);
+        }
+
+        return new SweetAlertResource([
+            'title' => 'Failed when trying to delete company!',
+            'text' => 'It was not possible to delete this company.',
+            'icon' => 'error'
         ]);
     }
 }
