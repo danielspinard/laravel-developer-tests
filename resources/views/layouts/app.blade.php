@@ -46,12 +46,12 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @foreach(config('app.languages') as $langLocale => $langName)
+                                @foreach(config('app.languages') as $locale => $name)
                                     <a
+                                        href="{{ route('language.change', ['language' => $locale]) }}"
                                         class="dropdown-item"
-                                        href=""
                                     >
-                                        {{ $langName }}
+                                        {{ $name }}
                                     </a>
                                 @endforeach
                             </div>
