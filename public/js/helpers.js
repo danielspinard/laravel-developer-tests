@@ -29,15 +29,7 @@ function ajaxStoreUpdateRequest(formElement, redirectOnSuccess = "") {
         processData: false,
         contentType: false,
         success: (response) => {
-            let success = response.responseJSON;
-
-            return swal({
-                title: "Company created.",
-                text: "Company was created successfully.",
-                icon: "success",
-                button: false,
-                timer: 2000,
-            }).then(() => {
+            return swal(response.data).then(() => {
                 $(location).attr("href", redirectOnSuccess);
             });
         },
