@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="card-body">
-                    @component('components.form')
+                    @component('components.company.form')
                         @slot('route', route('company.store'))
                         @slot('method', 'post')
                     @endcomponent

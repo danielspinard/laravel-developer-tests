@@ -28,14 +28,12 @@
                 </div>
     
                 <div class="card-body">
-                    @component('components.form')
-                        @slot('route', route('company.update', ['id' => $company->id]))
+                    @component('components.company.form')
+                        @slot('route')
+                            {{ route('company.update', ['id' => $company->id]) }}
+                        @endslot
                         @slot('method', 'patch')
-                        @slot('name', $company->name)
-                        @slot('email', $company->email)
-                        @slot('address', $company->address)
-                        @slot('website', $company->website)
-                        @slot('logo', $company->logo)
+                        @slot('company', $company)
                     @endcomponent
                 </div>
             </div>
@@ -63,7 +61,7 @@
                         @foreach($employees as $employee)
                             <tr>
                                 <td>
-                                    <a class="text-dark" href="{{ route('employee.show', $employee->id) }}">
+                                    <a href="{{ route('employee.show', $employee->id) }}" class="text-dark">
                                         {{ $employee->full_name }}
                                     </a>
                                 </td>
