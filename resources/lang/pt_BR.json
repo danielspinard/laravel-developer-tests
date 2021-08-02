@@ -82,5 +82,13 @@
     "Company was updated successfully.": "Empresa foi atualizada com sucesso.",
     "Failed when trying to update company!": "Falha ao tentar atualizar empresa!",
     "It was not possible to update this company.": "Não foi póssivel atualizar esta empresa.",
-    "The given data was invalid.": "Os dados fornecidos são inválidos."
+    "The given data was invalid.": "Os dados fornecidos são inválidos.",
+    "Employee info": "Informações do Funcionário",
+    "First Name": "Primeiro Nome",
+    "Last Name": "Uúltimo Nome",
+    "Create new employee": "Criar novo funcionário",
+    "Update employee info": "Atualizar informações do funcionário",
+    "Employee": "Funcionário",
+    "Back to company": "Voltar à empresa",
+    "Delete employee": "Excluir funcionário"
 }
